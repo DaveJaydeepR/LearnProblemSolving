@@ -13,7 +13,6 @@ namespace LearnProblemSolving
         {
 
             Hashtable ht = new Hashtable();
-            int count = 0;
             for(int i = 0; i < nums.Length; i++)
             {
                 if (ht.ContainsKey(target - nums[i]))

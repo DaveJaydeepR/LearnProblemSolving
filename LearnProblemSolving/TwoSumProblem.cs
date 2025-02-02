@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,27 +11,21 @@ namespace LearnProblemSolving
     {
         public int[] TwoSum(int[] nums, int target)
         {
-            int arrLength = nums.Length;
-            //Validation
-            if (nums == null || arrLength < 2)
+
+            Hashtable ht = new Hashtable();
+            int count = 0;
+            for(int i = 0; i < nums.Length; i++)
             {
-                return Array.Empty<int>();
-            }
-            //Logic
-            for (int i = 0; i < arrLength; i++)
-            {
-                for (int j = i + 1; j < arrLength; j++)
+                if (ht.ContainsKey(target - nums[i]))
                 {
-                    if (nums[i] + nums[j] == target)
-                    {
-                        return new int[] { i, j };
-                    }
+                    return new int[] { (int)ht[target - nums[i]], i };
                 }
-
+                else
+                {
+                    ht.Add(nums[i], i);
+                }
             }
-
-            return Array.Empty<int>();
-
+            return new int[] { };
         }
     }
 }
